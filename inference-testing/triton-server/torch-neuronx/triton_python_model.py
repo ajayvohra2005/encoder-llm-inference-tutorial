@@ -1,5 +1,6 @@
 import json
 import os
+import time
 
 from transformers import AutoModelForMaskedLM, AutoTokenizer
 import torch
@@ -90,8 +91,9 @@ class TritonPythonModel:
             logits = self.model(**inputs, return_dict=True).logits.detach().cpu().numpy()
             return logits
             
-    def run_inference(self, texts: list) -> list:
+    def _run_inference(self, texts: list) -> list:
         # Assumption tokenizer.pad_token value is 1
+        start = time.time()
         pad_value = 1
         input_batch_size = len(texts)
         assert input_batch_size <= self.max_batch_size, f"input_batch_size: {input_batch_size}  is > max_batch_size: {self.max_batch_size}"
@@ -112,10 +114,12 @@ class TritonPythonModel:
         logits  = self._bucket_batch_inference(inputs)
         logits = logits[:input_batch_size].tolist()
         logits = [ tensor[:ragged_input_ids[i].shape[0]] for i,tensor in enumerate(logits) ]
-
+        int_time = time.time() - start
+        self.logger.log_info(f"Model input_batch_size: {input_batch_size} input_seq_len: {input_seq_len}, inference time: {int_time}")
+        assert len(logits) == input_batch_size, f"num logits {len(logits)} != batch_size: {input_batch_size}"
         return logits
 
-    def compile_model(self):
+    def _compile_model(self):
         permutations = list(itertools.product(self.bucket_batch_size, self.bucket_seq_len))
         for batch_size,seq_len in permutations:
             self.logger.log_info(f"Compiling model for batch size: {batch_size}, seq length {seq_len}")
@@ -172,7 +176,7 @@ class TritonPythonModel:
         os.chdir("/tmp")
         
         self.model.to(xm.xla_device())
-        self.compile_model()
+        self._compile_model()
         
         os.chdir(path)
         self.logger.log_info("Exit: load_model")
@@ -218,7 +222,7 @@ class TritonPythonModel:
 
         while len(self.__requests) < self.max_batch_size:
             try:
-                await asyncio.sleep(.001) # Adjust based on model latency
+                await asyncio.sleep(.0001) # Adjust based on model latency
                 new_request = self.__request_queue.get_nowait()
                 self.__request_queue.task_done()
                 self.__requests.append(new_request)
@@ -229,16 +233,13 @@ class TritonPythonModel:
 
         texts = []
         for request in self.__requests:
-            print(f"request: {request}", flush=True)
             inputs = pb_utils.get_input_tensor_by_name(request, "text_input").as_numpy().tolist()
             text = [ input.decode("utf-8") if isinstance(input, bytes) else input for input in inputs]
-
-            print(f"text: {text}", flush=True)
             assert len(text) == 1
             texts.append(text[0])
         
         if texts:
-            logits = self.run_inference(texts)
+            logits = self._run_inference(texts)
             for result in logits:
                 self.__results.append(result)
 
@@ -246,11 +247,14 @@ class TritonPythonModel:
         while True:
             try:
                 await self.__check_requests()
+                assert len(self.__requests) <= self.max_batch_size, \
+                    f"num requests: {len(self.__requests)} > max_batch_size: {self.max_batch_size} "
+                
                 self.__inference()
 
-                assert len(self.__requests) == len(self.__results), \
-                f"requests: {len(self.__requests)} != results: {len(self.__results)}"
-
+                assert len(self.__results) == len(self.__requests), \
+                    f"After inference num_results {len(self.__results)} != num_requests {len(self.__requests)} "
+                
                 finished = []
                 for i in range(len(self.__requests)):
                     res = self.__results[i]
@@ -260,16 +264,16 @@ class TritonPythonModel:
                     except asyncio.QueueFull:
                         self.logger.log_info("response queue is full; await put")
                         await self.__response_queue.put((req, res))
-                finished.append((req, res))
+                    finished.append((req, res))
                 
                 for item in finished:
                     req, res = item
                     self.__requests.remove(req)
                     self.__results.remove(res)
 
-                assert len(self.__requests) == len(self.__results), \
-                f"requests: {len(self.__requests)} != results: {len(self.__results)}"
-
+                assert len(self.__results) == len(self.__requests), \
+                    f"After send response {len(self.__results)} != num_requests {len(self.__requests)} "
+                
             except Exception as e:
                 self.logger.log_error(f"Unpexpected error: {e}. Inflight requests discarded. Reset engine.")
                 self.reset()
@@ -290,7 +294,7 @@ class TritonPythonModel:
                 kwargs={"request": req, "response": res})
                 t.start()
             except Exception as e:
-                self.logger.log_info(f"Error: respond loop exception {e}")
+                self.logger.log_error(f"Error: respond loop exception {e}")
 
     def __send_response(self, request, response: list):
         try:
@@ -300,8 +304,7 @@ class TritonPythonModel:
             inference_response = pb_utils.InferenceResponse(output_tensors=[out_tensor])
             response_sender.send(inference_response, flags=pb_utils.TRITONSERVER_RESPONSE_COMPLETE_FINAL)
         except Exception as e:
-            self.logger.log_info(f"send error: {request}")
-            self.logger.log_info(e)
+            self.logger.log_error(f"send error: {request} {e}")
 
     def finalize(self):
         self.logger.log_info("Cleaning up...")

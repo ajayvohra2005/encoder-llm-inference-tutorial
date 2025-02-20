@@ -1,0 +1,391 @@
+starting locust
+starting locust worker 1
+starting locust worker 2
+starting locust worker 3
+starting locust worker 4
+starting locust worker 5
+starting locust worker 6
+starting locust worker 7
+starting locust worker 8
+waiting for locust testing to complete
+[2025-02-20 20:23:54,192] ip-100-64-1-4/INFO/locust.main: Starting Locust 2.32.10
+[2025-02-20 20:23:54,192] ip-100-64-1-4/INFO/locust.main: Starting Locust 2.32.10
+[2025-02-20 20:23:54,193] ip-100-64-1-4/INFO/locust.main: Starting Locust 2.32.10
+[2025-02-20 20:23:54,203] ip-100-64-1-4/INFO/locust.main: Starting Locust 2.32.10
+[2025-02-20 20:23:54,205] ip-100-64-1-4/INFO/locust.main: Starting Locust 2.32.10
+[2025-02-20 20:23:54,208] ip-100-64-1-4/INFO/locust.main: Starting Locust 2.32.10
+[2025-02-20 20:23:54,210] ip-100-64-1-4/INFO/locust.main: Starting Locust 2.32.10
+[2025-02-20 20:23:54,212] ip-100-64-1-4/INFO/locust.main: Starting Locust 2.32.10
+[2025-02-20 20:23:54,213] ip-100-64-1-4/INFO/locust.main: Starting Locust 2.32.10
+[2025-02-20 20:23:54,226] ip-100-64-1-4/INFO/locust.runners: ip-100-64-1-4_d3eef03ecfd04828945c6cd70f0eafd5 (index 0) reported as ready. 1 workers connected.
+[2025-02-20 20:23:54,226] ip-100-64-1-4/INFO/locust.runners: ip-100-64-1-4_97b28aa9aea34d1ab9f9506fcdcf9e08 (index 1) reported as ready. 2 workers connected.
+[2025-02-20 20:23:54,227] ip-100-64-1-4/INFO/locust.runners: ip-100-64-1-4_c865381e4d0d4749bfe2576944035aa2 (index 2) reported as ready. 3 workers connected.
+[2025-02-20 20:23:54,231] ip-100-64-1-4/INFO/locust.runners: ip-100-64-1-4_fd29a17118e3482dbd462afabf9c87ce (index 3) reported as ready. 4 workers connected.
+[2025-02-20 20:23:54,235] ip-100-64-1-4/INFO/locust.runners: ip-100-64-1-4_1c5f18f3b44d4e0499d3b2d03c8bd6e6 (index 4) reported as ready. 5 workers connected.
+[2025-02-20 20:23:54,239] ip-100-64-1-4/INFO/locust.runners: ip-100-64-1-4_d7a4d78c24054ff993c0a75773777271 (index 5) reported as ready. 6 workers connected.
+[2025-02-20 20:23:54,244] ip-100-64-1-4/INFO/locust.runners: ip-100-64-1-4_34f7200a34f34d8f9fbb92daa758a35e (index 6) reported as ready. 7 workers connected.
+[2025-02-20 20:23:54,248] ip-100-64-1-4/INFO/locust.runners: ip-100-64-1-4_3e2d6282ad5b4c0088cf0bada8306a91 (index 7) reported as ready. 8 workers connected.
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                         0     0(0.00%) |      0       0       0      0 |    0.00        0.00
+
+[2025-02-20 20:23:55,227] ip-100-64-1-4/INFO/locust.main: Run time limit set to 60 seconds
+[2025-02-20 20:23:55,227] ip-100-64-1-4/INFO/locust.runners: Sending spawn jobs of 64 users at 64.00 spawn rate to 8 ready workers
+[2025-02-20 20:23:55,742] ip-100-64-1-4/INFO/datasets: PyTorch version 2.5.1 available.
+[2025-02-20 20:23:55,742] ip-100-64-1-4/INFO/datasets: PyTorch version 2.5.1 available.
+[2025-02-20 20:23:55,769] ip-100-64-1-4/INFO/datasets: PyTorch version 2.5.1 available.
+[2025-02-20 20:23:55,769] ip-100-64-1-4/INFO/datasets: PyTorch version 2.5.1 available.
+[2025-02-20 20:23:55,769] ip-100-64-1-4/INFO/datasets: PyTorch version 2.5.1 available.
+[2025-02-20 20:23:55,769] ip-100-64-1-4/INFO/datasets: PyTorch version 2.5.1 available.
+[2025-02-20 20:23:55,770] ip-100-64-1-4/INFO/datasets: PyTorch version 2.5.1 available.
+[2025-02-20 20:23:55,793] ip-100-64-1-4/INFO/datasets: PyTorch version 2.5.1 available.
+[2025-02-20 20:23:56,234] ip-100-64-1-4/INFO/locust.runners: Spawning is complete and report waittime is expired, but not all reports received from workers: {"LocalEndpointUser": 0} (0 total users)
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                         0     0(0.00%) |      0       0       0      0 |    0.00        0.00
+
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                              1     0(0.00%) |   1689    1689    1689   1689 |    0.00        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                         1     0(0.00%) |   1689    1689    1689   1689 |    0.00        0.00
+
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                              9     0(0.00%) |   2058     971    3614   2000 |    0.33        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                         9     0(0.00%) |   2058     971    3614   2000 |    0.33        0.00
+
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                             15     0(0.00%) |   2394     971    4828   2000 |    1.50        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                        15     0(0.00%) |   2394     971    4828   2000 |    1.50        0.00
+
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                             20     0(0.00%) |   3326     971    7495   2200 |    2.14        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                        20     0(0.00%) |   3326     971    7495   2200 |    2.14        0.00
+
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                             23     0(0.00%) |   3770     971    7495   2700 |    2.14        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                        23     0(0.00%) |   3770     971    7495   2700 |    2.14        0.00
+
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                             39     0(0.00%) |   5761     971   10997   6300 |    2.90        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                        39     0(0.00%) |   5761     971   10997   6300 |    2.90        0.00
+
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                             39     0(0.00%) |   5761     971   10997   6300 |    2.90        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                        39     0(0.00%) |   5761     971   10997   6300 |    2.90        0.00
+
+[2025-02-20 20:24:12,242] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_d3eef03ecfd04828945c6cd70f0eafd5 failed to send heartbeat, setting state to missing.
+[2025-02-20 20:24:12,242] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_c865381e4d0d4749bfe2576944035aa2 failed to send heartbeat, setting state to missing.
+[2025-02-20 20:24:12,247] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_d7a4d78c24054ff993c0a75773777271 failed to send heartbeat, setting state to missing.
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                             41     0(0.00%) |   6079     971   13349   6800 |    3.60        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                        41     0(0.00%) |   6079     971   13349   6800 |    3.60        0.00
+
+[2025-02-20 20:24:13,248] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_97b28aa9aea34d1ab9f9506fcdcf9e08 failed to send heartbeat, setting state to missing.
+[2025-02-20 20:24:13,248] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_fd29a17118e3482dbd462afabf9c87ce failed to send heartbeat, setting state to missing.
+[2025-02-20 20:24:13,283] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_d7a4d78c24054ff993c0a75773777271 self-healed with heartbeat, setting state to running.
+[2025-02-20 20:24:13,283] ip-100-64-1-4/INFO/locust.runners: Sending spawn jobs of 64 users at 64.00 spawn rate to 3 ready workers
+[2025-02-20 20:24:14,249] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_1c5f18f3b44d4e0499d3b2d03c8bd6e6 failed to send heartbeat, setting state to missing.
+[2025-02-20 20:24:14,249] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_3e2d6282ad5b4c0088cf0bada8306a91 failed to send heartbeat, setting state to missing.
+[2025-02-20 20:24:14,285] ip-100-64-1-4/INFO/locust.runners: Spawning is complete and report waittime is expired, but not all reports received from workers: {"LocalEndpointUser": 8} (8 total users)
+[2025-02-20 20:24:14,286] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_c865381e4d0d4749bfe2576944035aa2 self-healed with heartbeat, setting state to running.
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                             48     0(0.00%) |   7052     971   16156   7400 |    3.00        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                        48     0(0.00%) |   7052     971   16156   7400 |    3.00        0.00
+
+[2025-02-20 20:24:14,707] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_fd29a17118e3482dbd462afabf9c87ce self-healed with heartbeat, setting state to running.
+[2025-02-20 20:24:14,707] ip-100-64-1-4/WARNING/root: CPU usage above 90%! This may constrain your throughput and may even give inconsistent response time measurements! See https://docs.locust.io/en/stable/running-distributed.html for how to distribute the load over multiple CPU cores or machines
+[2025-02-20 20:24:15,250] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_34f7200a34f34d8f9fbb92daa758a35e failed to send heartbeat, setting state to missing.
+[2025-02-20 20:24:15,812] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_3e2d6282ad5b4c0088cf0bada8306a91 self-healed with heartbeat, setting state to running.
+[2025-02-20 20:24:15,812] ip-100-64-1-4/WARNING/root: CPU usage above 90%! This may constrain your throughput and may even give inconsistent response time measurements! See https://docs.locust.io/en/stable/running-distributed.html for how to distribute the load over multiple CPU cores or machines
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                             58     0(0.00%) |   7699     971   17299   8100 |    3.60        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                        58     0(0.00%) |   7699     971   17299   8100 |    3.60        0.00
+
+[2025-02-20 20:24:16,678] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_1c5f18f3b44d4e0499d3b2d03c8bd6e6 self-healed with heartbeat, setting state to running.
+[2025-02-20 20:24:16,678] ip-100-64-1-4/WARNING/root: CPU usage above 90%! This may constrain your throughput and may even give inconsistent response time measurements! See https://docs.locust.io/en/stable/running-distributed.html for how to distribute the load over multiple CPU cores or machines
+[2025-02-20 20:24:16,807] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_d3eef03ecfd04828945c6cd70f0eafd5 self-healed with heartbeat, setting state to running.
+[2025-02-20 20:24:16,807] ip-100-64-1-4/WARNING/root: CPU usage above 90%! This may constrain your throughput and may even give inconsistent response time measurements! See https://docs.locust.io/en/stable/running-distributed.html for how to distribute the load over multiple CPU cores or machines
+[2025-02-20 20:24:16,815] ip-100-64-1-4/WARNING/root: CPU usage above 90%! This may constrain your throughput and may even give inconsistent response time measurements! See https://docs.locust.io/en/stable/running-distributed.html for how to distribute the load over multiple CPU cores or machines
+[2025-02-20 20:24:17,711] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_97b28aa9aea34d1ab9f9506fcdcf9e08 self-healed with heartbeat, setting state to running.
+[2025-02-20 20:24:17,711] ip-100-64-1-4/WARNING/root: CPU usage above 90%! This may constrain your throughput and may even give inconsistent response time measurements! See https://docs.locust.io/en/stable/running-distributed.html for how to distribute the load over multiple CPU cores or machines
+[2025-02-20 20:24:17,816] ip-100-64-1-4/WARNING/locust.runners: Worker ip-100-64-1-4_34f7200a34f34d8f9fbb92daa758a35e (index 6) exceeded cpu threshold (will only log this once per worker)
+[2025-02-20 20:24:18,254] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_d7a4d78c24054ff993c0a75773777271 failed to send heartbeat, setting state to missing.
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                             80     0(0.00%) |   9165     971   18459   9100 |    4.80        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                        80     0(0.00%) |   9165     971   18459   9100 |    4.80        0.00
+
+[2025-02-20 20:24:18,613] ip-100-64-1-4/WARNING/locust.runners: Worker ip-100-64-1-4_d3eef03ecfd04828945c6cd70f0eafd5 (index 0) exceeded cpu threshold (will only log this once per worker)
+[2025-02-20 20:24:18,674] ip-100-64-1-4/WARNING/root: CPU usage above 90%! This may constrain your throughput and may even give inconsistent response time measurements! See https://docs.locust.io/en/stable/running-distributed.html for how to distribute the load over multiple CPU cores or machines
+[2025-02-20 20:24:19,116] ip-100-64-1-4/WARNING/locust.runners: Worker ip-100-64-1-4_fd29a17118e3482dbd462afabf9c87ce (index 3) exceeded cpu threshold (will only log this once per worker)
+[2025-02-20 20:24:19,255] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_c865381e4d0d4749bfe2576944035aa2 failed to send heartbeat, setting state to missing.
+[2025-02-20 20:24:19,319] ip-100-64-1-4/WARNING/root: CPU usage above 90%! This may constrain your throughput and may even give inconsistent response time measurements! See https://docs.locust.io/en/stable/running-distributed.html for how to distribute the load over multiple CPU cores or machines
+[2025-02-20 20:24:19,320] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_c865381e4d0d4749bfe2576944035aa2 self-healed with heartbeat, setting state to running.
+[2025-02-20 20:24:19,324] ip-100-64-1-4/WARNING/locust.runners: Worker ip-100-64-1-4_c865381e4d0d4749bfe2576944035aa2 (index 2) exceeded cpu threshold (will only log this once per worker)
+[2025-02-20 20:24:19,676] ip-100-64-1-4/WARNING/locust.runners: Worker ip-100-64-1-4_d7a4d78c24054ff993c0a75773777271 (index 5) exceeded cpu threshold (will only log this once per worker)
+[2025-02-20 20:24:19,978] ip-100-64-1-4/WARNING/locust.runners: Worker ip-100-64-1-4_97b28aa9aea34d1ab9f9506fcdcf9e08 (index 1) exceeded cpu threshold (will only log this once per worker)
+[2025-02-20 20:24:20,256] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_3e2d6282ad5b4c0088cf0bada8306a91 failed to send heartbeat, setting state to missing.
+[2025-02-20 20:24:20,300] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_3e2d6282ad5b4c0088cf0bada8306a91 self-healed with heartbeat, setting state to spawning.
+[2025-02-20 20:24:20,300] ip-100-64-1-4/WARNING/locust.runners: Worker ip-100-64-1-4_3e2d6282ad5b4c0088cf0bada8306a91 (index 7) exceeded cpu threshold (will only log this once per worker)
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                             97     0(0.00%) |   9684     971   20137   9700 |    5.20        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                        97     0(0.00%) |   9684     971   20137   9700 |    5.20        0.00
+
+[2025-02-20 20:24:20,374] ip-100-64-1-4/WARNING/locust.runners: Worker ip-100-64-1-4_1c5f18f3b44d4e0499d3b2d03c8bd6e6 (index 4) exceeded cpu threshold (will only log this once per worker)
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            109     0(0.00%) |   9746     971   20137   9800 |    5.10        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       109     0(0.00%) |   9746     971   20137   9800 |    5.10        0.00
+
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            117     0(0.00%) |   9591     971   20137   9700 |    5.20        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       117     0(0.00%) |   9591     971   20137   9700 |    5.20        0.00
+
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            120     0(0.00%) |   9496     971   20137   9600 |    5.10        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       120     0(0.00%) |   9496     971   20137   9600 |    5.10        0.00
+
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            127     0(0.00%) |   9680     971   20137   9700 |    4.90        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       127     0(0.00%) |   9680     971   20137   9700 |    4.90        0.00
+
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            132     0(0.00%) |   9820     971   20652   9800 |    3.90        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       132     0(0.00%) |   9820     971   20652   9800 |    3.90        0.00
+
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            138     0(0.00%) |   9950     971   20652   9800 |    3.20        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       138     0(0.00%) |   9950     971   20652   9800 |    3.20        0.00
+
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            150     0(0.00%) |  10249     971   20652  10000 |    3.40        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       150     0(0.00%) |  10249     971   20652  10000 |    3.40        0.00
+
+[2025-02-20 20:24:36,269] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_3e2d6282ad5b4c0088cf0bada8306a91 failed to send heartbeat, setting state to missing.
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            153     0(0.00%) |  10291     971   20652  10000 |    3.60        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       153     0(0.00%) |  10291     971   20652  10000 |    3.60        0.00
+
+[2025-02-20 20:24:37,270] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_97b28aa9aea34d1ab9f9506fcdcf9e08 failed to send heartbeat, setting state to missing.
+[2025-02-20 20:24:37,270] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_fd29a17118e3482dbd462afabf9c87ce failed to send heartbeat, setting state to missing.
+[2025-02-20 20:24:37,270] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_d7a4d78c24054ff993c0a75773777271 failed to send heartbeat, setting state to missing.
+[2025-02-20 20:24:38,275] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_c865381e4d0d4749bfe2576944035aa2 failed to send heartbeat, setting state to missing.
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            153     0(0.00%) |  10291     971   20652  10000 |    3.60        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       153     0(0.00%) |  10291     971   20652  10000 |    3.60        0.00
+
+[2025-02-20 20:24:38,871] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_fd29a17118e3482dbd462afabf9c87ce self-healed with heartbeat, setting state to running.
+[2025-02-20 20:24:39,276] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_d3eef03ecfd04828945c6cd70f0eafd5 failed to send heartbeat, setting state to missing.
+[2025-02-20 20:24:39,277] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_1c5f18f3b44d4e0499d3b2d03c8bd6e6 failed to send heartbeat, setting state to missing.
+[2025-02-20 20:24:40,282] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_34f7200a34f34d8f9fbb92daa758a35e failed to send heartbeat, setting state to missing.
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            158     0(0.00%) |  10336     971   20652  10000 |    3.30        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       158     0(0.00%) |  10336     971   20652  10000 |    3.30        0.00
+
+[2025-02-20 20:24:40,495] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_c865381e4d0d4749bfe2576944035aa2 self-healed with heartbeat, setting state to running.
+[2025-02-20 20:24:41,157] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_97b28aa9aea34d1ab9f9506fcdcf9e08 self-healed with heartbeat, setting state to running.
+[2025-02-20 20:24:41,795] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_d7a4d78c24054ff993c0a75773777271 self-healed with heartbeat, setting state to spawning.
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            176     0(0.00%) |  11191     971   27117  12000 |    3.90        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       176     0(0.00%) |  11191     971   27117  12000 |    3.90        0.00
+
+[2025-02-20 20:24:42,899] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_d3eef03ecfd04828945c6cd70f0eafd5 self-healed with heartbeat, setting state to running.
+[2025-02-20 20:24:43,336] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_3e2d6282ad5b4c0088cf0bada8306a91 self-healed with heartbeat, setting state to running.
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            197     0(0.00%) |  11491     971   27117  12000 |    4.50        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       197     0(0.00%) |  11491     971   27117  12000 |    4.50        0.00
+
+[2025-02-20 20:24:44,366] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_34f7200a34f34d8f9fbb92daa758a35e self-healed with heartbeat, setting state to spawning.
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            209     0(0.00%) |  11544     971   27117  12000 |    4.40        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       209     0(0.00%) |  11544     971   27117  12000 |    4.40        0.00
+
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            215     0(0.00%) |  11830     971   27117  12000 |    4.30        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       215     0(0.00%) |  11830     971   27117  12000 |    4.30        0.00
+
+[2025-02-20 20:24:50,147] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_1c5f18f3b44d4e0499d3b2d03c8bd6e6 self-healed with heartbeat, setting state to running.
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            232     0(0.00%) |  12383     971   39984  12000 |    4.60        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       232     0(0.00%) |  12383     971   39984  12000 |    4.60        0.00
+
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            239     0(0.00%) |  12438     971   39984  12000 |    4.30        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       239     0(0.00%) |  12438     971   39984  12000 |    4.30        0.00
+
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            249     0(0.00%) |  12602     971   39984  12000 |    4.50        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       249     0(0.00%) |  12602     971   39984  12000 |    4.50        0.00
+
+[2025-02-20 20:24:54,477] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_fd29a17118e3482dbd462afabf9c87ce failed to send heartbeat, setting state to missing.
+[2025-02-20 20:24:54,660] ip-100-64-1-4/INFO/locust.runners: Worker ip-100-64-1-4_fd29a17118e3482dbd462afabf9c87ce self-healed with heartbeat, setting state to running.
+[2025-02-20 20:24:55,228] ip-100-64-1-4/INFO/locust.main: --run-time limit reached, shutting down
+[2025-02-20 20:24:55,317] ip-100-64-1-4/INFO/locust.runners: Got quit message from master, shutting down...
+[2025-02-20 20:24:55,443] ip-100-64-1-4/WARNING/locust.runners: CPU usage was too high at some point during the test! See https://docs.locust.io/en/stable/running-distributed.html for how to distribute the load over multiple CPU cores or machines
+[2025-02-20 20:24:55,444] ip-100-64-1-4/INFO/locust.main: Shutting down (exit code 0)
+[2025-02-20 20:24:55,444] ip-100-64-1-4/INFO/locust.runners: Worker 'ip-100-64-1-4_c865381e4d0d4749bfe2576944035aa2' (index 2) quit. 0 workers ready.
+[2025-02-20 20:24:56,230] ip-100-64-1-4/INFO/locust.main: Shutting down (exit code 0)
+[2025-02-20 20:24:56,387] ip-100-64-1-4/INFO/locust.runners: Got quit message from master, shutting down...
+[2025-02-20 20:24:56,515] ip-100-64-1-4/INFO/locust.runners: Got quit message from master, shutting down...
+[2025-02-20 20:24:56,578] ip-100-64-1-4/WARNING/locust.runners: CPU usage was too high at some point during the test! See https://docs.locust.io/en/stable/running-distributed.html for how to distribute the load over multiple CPU cores or machines
+[2025-02-20 20:24:56,579] ip-100-64-1-4/INFO/locust.main: Shutting down (exit code 0)
+Type     Name                                                                          # reqs      # fails |    Avg     Min     Max    Med |   req/s  failures/s
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+Post     Local                                                                            262     0(0.00%) |  12907     971   39984  13000 |    4.34        0.00
+--------|----------------------------------------------------------------------------|-------|-------------|-------|-------|-------|-------|--------|-----------
+         Aggregated                                                                       262     0(0.00%) |  12907     971   39984  13000 |    4.34        0.00
+
+Response time percentiles (approximated)
+Type     Name                                                                                  50%    66%    75%    80%    90%    95%    98%    99%  99.9% 99.99%   100% # reqs
+--------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+Post     Local                                                                               13000  15000  16000  18000  21000  25000  30000  32000  40000  40000  40000    262
+--------|--------------------------------------------------------------------------------|--------|------|------|------|------|------|------|------|------|------|------|------
+         Aggregated                                                                          13000  15000  16000  18000  21000  25000  30000  32000  40000  40000  40000    262
+
+[2025-02-20 20:24:56,867] ip-100-64-1-4/INFO/locust.runners: Got quit message from master, shutting down...
+Traceback (most recent call last):
+  File "src/gevent/greenlet.py", line 900, in gevent._gevent_cgreenlet.Greenlet.run
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/locust/runners.py", line 1382, in <lambda>
+    self.spawning_greenlet = self.greenlet.spawn(lambda: self.start_worker(job["user_classes_count"]))
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/locust/runners.py", line 1291, in start_worker
+    self.spawn_users(user_classes_spawn_count)
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/locust/runners.py", line 225, in spawn_users
+    new_users += spawn(user_class, spawn_count)
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/locust/runners.py", line 211, in spawn
+    new_user = self.user_classes_by_name[user_class](self.environment)
+  File "/home/ubuntu/efs/git/encoder-llm-inference-tutorial/inference-testing/locust-testing/endpoint_user.py", line 74, in __init__
+    self.client = EndpointClient(self.host)
+  File "/home/ubuntu/efs/git/encoder-llm-inference-tutorial/inference-testing/locust-testing/endpoint_user.py", line 17, in __init__
+    self.__init_prompt_generator()
+  File "/home/ubuntu/efs/git/encoder-llm-inference-tutorial/inference-testing/locust-testing/endpoint_user.py", line 28, in __init_prompt_generator
+    self.text_input_generator = prompt_generator_class()()
+  File "/home/ubuntu/efs/git/encoder-llm-inference-tutorial/inference-testing/locust-testing/modules/thudm-longbench/encoder_llm_prompt.py", line 10, in __init__
+    self.dataset = datasets.load_dataset('THUDM/LongBench', random.choice(self.datasets), split='test')
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/datasets/load.py", line 2129, in load_dataset
+    builder_instance = load_dataset_builder(
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/datasets/load.py", line 1886, in load_dataset_builder
+    builder_instance: DatasetBuilder = builder_cls(
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/datasets/builder.py", line 342, in __init__
+    self.config, self.config_id = self._create_builder_config(
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/datasets/builder.py", line 597, in _create_builder_config
+    builder_config._resolve_data_files(
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/datasets/builder.py", line 206, in _resolve_data_files
+    self.data_files = self.data_files.resolve(base_path, download_config)
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/datasets/data_files.py", line 818, in resolve
+    out[key] = data_files_patterns_list.resolve(base_path, download_config)
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/datasets/data_files.py", line 771, in resolve
+    resolve_pattern(
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/datasets/data_files.py", line 411, in resolve_pattern
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Unable to find 'hf://datasets/THUDM/LongBench@a8b3fea296d0126b1887abb5ad2004d9184344fc/repobench-p/test/0000.parquet' with any supported extension ['.csv', '.tsv', '.json', '.jsonl', '.ndjson', '.parquet', '.geoparquet', '.gpq', '.arrow', '.txt', '.tar', '.xml', '.blp', '.bmp', '.dib', '.bufr', '.cur', '.pcx', '.dcx', '.dds', '.ps', '.eps', '.fit', '.fits', '.fli', '.flc', '.ftc', '.ftu', '.gbr', '.gif', '.grib', '.png', '.apng', '.jp2', '.j2k', '.jpc', '.jpf', '.jpx', '.j2c', '.icns', '.ico', '.im', '.iim', '.tif', '.tiff', '.jfif', '.jpe', '.jpg', '.jpeg', '.mpg', '.mpeg', '.msp', '.pcd', '.pxr', '.pbm', '.pgm', '.ppm', '.pnm', '.psd', '.bw', '.rgb', '.rgba', '.sgi', '.ras', '.tga', '.icb', '.vda', '.vst', '.webp', '.wmf', '.emf', '.xbm', '.xpm', '.BLP', '.BMP', '.DIB', '.BUFR', '.CUR', '.PCX', '.DCX', '.DDS', '.PS', '.EPS', '.FIT', '.FITS', '.FLI', '.FLC', '.FTC', '.FTU', '.GBR', '.GIF', '.GRIB', '.PNG', '.APNG', '.JP2', '.J2K', '.JPC', '.JPF', '.JPX', '.J2C', '.ICNS', '.ICO', '.IM', '.IIM', '.TIF', '.TIFF', '.JFIF', '.JPE', '.JPG', '.JPEG', '.MPG', '.MPEG', '.MSP', '.PCD', '.PXR', '.PBM', '.PGM', '.PPM', '.PNM', '.PSD', '.BW', '.RGB', '.RGBA', '.SGI', '.RAS', '.TGA', '.ICB', '.VDA', '.VST', '.WEBP', '.WMF', '.EMF', '.XBM', '.XPM', '.aiff', '.au', '.avr', '.caf', '.flac', '.htk', '.svx', '.mat4', '.mat5', '.mpc2k', '.ogg', '.paf', '.pvf', '.raw', '.rf64', '.sd2', '.sds', '.ircam', '.voc', '.w64', '.wav', '.nist', '.wavex', '.wve', '.xi', '.mp3', '.opus', '.AIFF', '.AU', '.AVR', '.CAF', '.FLAC', '.HTK', '.SVX', '.MAT4', '.MAT5', '.MPC2K', '.OGG', '.PAF', '.PVF', '.RAW', '.RF64', '.SD2', '.SDS', '.IRCAM', '.VOC', '.W64', '.WAV', '.NIST', '.WAVEX', '.WVE', '.XI', '.MP3', '.OPUS', '.mkv', '.mp4', '.avi', '.mov', '.MKV', '.MP4', '.AVI', '.MOV', '.zip']
+2025-02-20T20:24:56Z <Greenlet at 0x6ffbe8783380: _run> failed with FileNotFoundError
+
+[2025-02-20 20:24:56,925] ip-100-64-1-4/CRITICAL/locust.runners: Unhandled exception in greenlet: <Greenlet at 0x6ffbe8783380: _run>
+Traceback (most recent call last):
+  File "src/gevent/greenlet.py", line 900, in gevent._gevent_cgreenlet.Greenlet.run
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/locust/runners.py", line 1382, in <lambda>
+    self.spawning_greenlet = self.greenlet.spawn(lambda: self.start_worker(job["user_classes_count"]))
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/locust/runners.py", line 1291, in start_worker
+    self.spawn_users(user_classes_spawn_count)
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/locust/runners.py", line 225, in spawn_users
+    new_users += spawn(user_class, spawn_count)
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/locust/runners.py", line 211, in spawn
+    new_user = self.user_classes_by_name[user_class](self.environment)
+  File "/home/ubuntu/efs/git/encoder-llm-inference-tutorial/inference-testing/locust-testing/endpoint_user.py", line 74, in __init__
+    self.client = EndpointClient(self.host)
+  File "/home/ubuntu/efs/git/encoder-llm-inference-tutorial/inference-testing/locust-testing/endpoint_user.py", line 17, in __init__
+    self.__init_prompt_generator()
+  File "/home/ubuntu/efs/git/encoder-llm-inference-tutorial/inference-testing/locust-testing/endpoint_user.py", line 28, in __init_prompt_generator
+    self.text_input_generator = prompt_generator_class()()
+  File "/home/ubuntu/efs/git/encoder-llm-inference-tutorial/inference-testing/locust-testing/modules/thudm-longbench/encoder_llm_prompt.py", line 10, in __init__
+    self.dataset = datasets.load_dataset('THUDM/LongBench', random.choice(self.datasets), split='test')
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/datasets/load.py", line 2129, in load_dataset
+    builder_instance = load_dataset_builder(
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/datasets/load.py", line 1886, in load_dataset_builder
+    builder_instance: DatasetBuilder = builder_cls(
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/datasets/builder.py", line 342, in __init__
+    self.config, self.config_id = self._create_builder_config(
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/datasets/builder.py", line 597, in _create_builder_config
+    builder_config._resolve_data_files(
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/datasets/builder.py", line 206, in _resolve_data_files
+    self.data_files = self.data_files.resolve(base_path, download_config)
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/datasets/data_files.py", line 818, in resolve
+    out[key] = data_files_patterns_list.resolve(base_path, download_config)
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/datasets/data_files.py", line 771, in resolve
+    resolve_pattern(
+  File "/home/ubuntu/aws_neuron_venv_pytorch/lib/python3.10/site-packages/datasets/data_files.py", line 411, in resolve_pattern
+    raise FileNotFoundError(error_msg)
+FileNotFoundError: Unable to find 'hf://datasets/THUDM/LongBench@a8b3fea296d0126b1887abb5ad2004d9184344fc/repobench-p/test/0000.parquet' with any supported extension ['.csv', '.tsv', '.json', '.jsonl', '.ndjson', '.parquet', '.geoparquet', '.gpq', '.arrow', '.txt', '.tar', '.xml', '.blp', '.bmp', '.dib', '.bufr', '.cur', '.pcx', '.dcx', '.dds', '.ps', '.eps', '.fit', '.fits', '.fli', '.flc', '.ftc', '.ftu', '.gbr', '.gif', '.grib', '.png', '.apng', '.jp2', '.j2k', '.jpc', '.jpf', '.jpx', '.j2c', '.icns', '.ico', '.im', '.iim', '.tif', '.tiff', '.jfif', '.jpe', '.jpg', '.jpeg', '.mpg', '.mpeg', '.msp', '.pcd', '.pxr', '.pbm', '.pgm', '.ppm', '.pnm', '.psd', '.bw', '.rgb', '.rgba', '.sgi', '.ras', '.tga', '.icb', '.vda', '.vst', '.webp', '.wmf', '.emf', '.xbm', '.xpm', '.BLP', '.BMP', '.DIB', '.BUFR', '.CUR', '.PCX', '.DCX', '.DDS', '.PS', '.EPS', '.FIT', '.FITS', '.FLI', '.FLC', '.FTC', '.FTU', '.GBR', '.GIF', '.GRIB', '.PNG', '.APNG', '.JP2', '.J2K', '.JPC', '.JPF', '.JPX', '.J2C', '.ICNS', '.ICO', '.IM', '.IIM', '.TIF', '.TIFF', '.JFIF', '.JPE', '.JPG', '.JPEG', '.MPG', '.MPEG', '.MSP', '.PCD', '.PXR', '.PBM', '.PGM', '.PPM', '.PNM', '.PSD', '.BW', '.RGB', '.RGBA', '.SGI', '.RAS', '.TGA', '.ICB', '.VDA', '.VST', '.WEBP', '.WMF', '.EMF', '.XBM', '.XPM', '.aiff', '.au', '.avr', '.caf', '.flac', '.htk', '.svx', '.mat4', '.mat5', '.mpc2k', '.ogg', '.paf', '.pvf', '.raw', '.rf64', '.sd2', '.sds', '.ircam', '.voc', '.w64', '.wav', '.nist', '.wavex', '.wve', '.xi', '.mp3', '.opus', '.AIFF', '.AU', '.AVR', '.CAF', '.FLAC', '.HTK', '.SVX', '.MAT4', '.MAT5', '.MPC2K', '.OGG', '.PAF', '.PVF', '.RAW', '.RF64', '.SD2', '.SDS', '.IRCAM', '.VOC', '.W64', '.WAV', '.NIST', '.WAVEX', '.WVE', '.XI', '.MP3', '.OPUS', '.mkv', '.mp4', '.avi', '.mov', '.MKV', '.MP4', '.AVI', '.MOV', '.zip']
+[2025-02-20 20:24:56,985] ip-100-64-1-4/WARNING/locust.runners: CPU usage was too high at some point during the test! See https://docs.locust.io/en/stable/running-distributed.html for how to distribute the load over multiple CPU cores or machines
+[2025-02-20 20:24:56,985] ip-100-64-1-4/INFO/locust.main: Shutting down (exit code 0)
+[2025-02-20 20:24:57,672] ip-100-64-1-4/INFO/locust.runners: Got quit message from master, shutting down...
+[2025-02-20 20:25:02,693] ip-100-64-1-4/INFO/locust.runners: Got quit message from master, shutting down...
+[2025-02-20 20:25:05,165] ip-100-64-1-4/WARNING/locust.runners: CPU usage was too high at some point during the test! See https://docs.locust.io/en/stable/running-distributed.html for how to distribute the load over multiple CPU cores or machines
+[2025-02-20 20:25:05,166] ip-100-64-1-4/INFO/locust.main: Shutting down (exit code 2)
+[2025-02-20 20:25:05,218] ip-100-64-1-4/INFO/locust.runners: Got quit message from master, shutting down...
+[2025-02-20 20:25:05,274] ip-100-64-1-4/WARNING/locust.runners: CPU usage was too high at some point during the test! See https://docs.locust.io/en/stable/running-distributed.html for how to distribute the load over multiple CPU cores or machines
+[2025-02-20 20:25:05,275] ip-100-64-1-4/INFO/locust.main: Shutting down (exit code 0)
+[2025-02-20 20:25:07,701] ip-100-64-1-4/INFO/locust.runners: Got quit message from master, shutting down...
+[2025-02-20 20:25:08,027] ip-100-64-1-4/WARNING/locust.runners: CPU usage was too high at some point during the test! See https://docs.locust.io/en/stable/running-distributed.html for how to distribute the load over multiple CPU cores or machines
+[2025-02-20 20:25:08,028] ip-100-64-1-4/INFO/locust.main: Shutting down (exit code 0)
+[2025-02-20 20:25:12,502] ip-100-64-1-4/WARNING/locust.runners: CPU usage was too high at some point during the test! See https://docs.locust.io/en/stable/running-distributed.html for how to distribute the load over multiple CPU cores or machines
+[2025-02-20 20:25:12,503] ip-100-64-1-4/INFO/locust.main: Shutting down (exit code 0)
+[2025-02-20 20:25:17,156] ip-100-64-1-4/WARNING/locust.runners: CPU usage was too high at some point during the test! See https://docs.locust.io/en/stable/running-distributed.html for how to distribute the load over multiple CPU cores or machines
+[2025-02-20 20:25:17,157] ip-100-64-1-4/INFO/locust.main: Shutting down (exit code 0)

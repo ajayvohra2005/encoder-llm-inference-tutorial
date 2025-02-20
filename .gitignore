@@ -1,3 +1,4 @@
 log-neuron-cc.txt
 global_metric_store.json
 model.pt
+**/output
