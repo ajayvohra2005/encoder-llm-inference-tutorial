@@ -13,6 +13,7 @@ if [ "$1" == "up" ]
 then
 mkdir -p $HOME/scripts/triton
 cp $scripts_dir/triton-torch-neuronx.sh $HOME/scripts/triton/
+cp $scripts_dir/triton_python_model.py $HOME/scripts/triton/
 chmod a+x $HOME/scripts/triton/*.sh
 mkdir -p $HOME/cache
 
