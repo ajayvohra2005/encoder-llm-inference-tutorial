@@ -1,5 +1,5 @@
 log-neuron-cc.txt
 global_metric_store.json
-model.pt
+**.pt
 **/output
 **.log

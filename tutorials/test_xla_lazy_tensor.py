@@ -44,10 +44,10 @@ avg_time = 0.0
 for i in range(128):
     start = time.time()
     output = model(**encoded_input)
-    print(torch_xla._XLAC._get_xla_tensors_text([output['logits']]))
+    # print(torch_xla._XLAC._get_xla_tensors_text([output['logits']]))
     if xm:
         xm.mark_step()
-    print(torch_xla._XLAC._get_xla_tensors_text([output['logits']]))
+    # print(torch_xla._XLAC._get_xla_tensors_text([output['logits']]))
     end = time.time()
     print(f"logits: {output['logits']}, time: {end-start}")
     avg_time = ((avg_time*i) + (end-start))/(i+1)

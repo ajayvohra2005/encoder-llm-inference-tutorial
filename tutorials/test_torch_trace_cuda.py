@@ -46,11 +46,12 @@ for i in range(128):
     print(f"logits: {output['logits']}, time: {end-start}")
     avg_time1 = ((avg_time1*i) + (end-start))/(i+1)
 
-trace = torch.jit.trace(model, strict=False, example_kwarg_inputs=dict(encoded_input))
-print(f"Torch Script graph: {trace.graph}")
-torch.jit.save(trace, 'model.pt')
+if not os.path.exists("model-cuda.pt"):
+    trace = torch.jit.trace(model, strict=False, example_kwarg_inputs=dict(encoded_input))
+    print(f"Torch Script graph: {trace.graph}")
+    torch.jit.save(trace, 'model-cuda.pt')
 
-model = torch.jit.load('model.pt')
+model = torch.jit.load('model-cuda.pt')
 
 avg_time = 0.0
 for _ in range(128):

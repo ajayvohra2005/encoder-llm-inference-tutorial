@@ -28,7 +28,7 @@
 				"docker-build-xla"
 			],
 			"python": {
-				"file": "tutorials/test_xla_lazy_tensor.py"
+				"file": "tutorials/test_encoder_llm_inference.py"
 			},
 			"dockerRun": {
 				"image": "docker.io/library/encoder-llm-inference-tutorial:latest",
