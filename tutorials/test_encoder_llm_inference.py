@@ -5,11 +5,28 @@ import time
 from transformers import AutoModelForMaskedLM, AutoTokenizer
 import torch
 import logging
-import torch_xla.core.xla_model as xm
 import math
 import itertools
 import torch.nn.functional as F
+try:
+    import torch_xla.core.xla_model as xm
+    import torch_xla.runtime as xr
+    import torch_xla.distributed.xla_backend as xb
+except ImportError:
+    xm = None
+    xr = None
+    xb = None
 
+def get_device() -> torch.device:
+    if xm:
+        return xm.xla_device()
+    elif torch.cuda.is_available():
+        __current_device = torch.device('cuda:0')
+        torch.cuda.set_device(__current_device)
+        return __current_device
+    else:
+        return torch.device("cpu")
+    
 os.environ["NEURON_CC_FLAGS"] = "--model-type=transformer --enable-fast-loading-neuron-binaries"
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 os.environ['NEURON_RT_VISIBLE_CORES'] = "0"
@@ -88,15 +105,16 @@ def load_model(properties):
     path = os.getcwd()
     os.chdir("/tmp")
     
-    model.to(xm.xla_device())
-    compile_model()
+    model.to(get_device())
+    if xm:
+        compile_model()
     
     os.chdir(path)
     logging.info("Exit: load_model")
 
-def _bucket_batch_inference(inputs: dict) -> list:  
+def _bucket_batch_inference(inputs) -> list:  
     with torch.no_grad():
-        inputs.to(xm.xla_device())
+        inputs.to(get_device())
         logits = model(**inputs, return_dict=True).logits.detach().cpu().numpy()
         return logits
         
@@ -105,7 +123,7 @@ def run_inference(texts: list):
 
     input_batch_size = len(texts)
     assert input_batch_size <= max_batch_size, f"batch_size: {input_batch_size}  is > max_batch_size: {max_batch_size}"
-    pad_batch_size = get_bucket_batch_size(input_batch_size)
+    pad_batch_size = get_bucket_batch_size(input_batch_size) if xm else input_batch_size
 
     texts.extend([ example_text for _ in range(pad_batch_size - input_batch_size) ] )
     inputs = tokenizer(texts, padding="longest", truncation=True, return_tensors='pt', max_length=max_seq_len)
@@ -115,7 +133,7 @@ def run_inference(texts: list):
     ragged_input_ids = [ unpad_tensor(tensor, 1) for tensor in input_ids ]
 
     input_seq_len = inputs['input_ids'].shape[-1]
-    pad_seq_len = get_bucket_seq_len(input_seq_len)
+    pad_seq_len = get_bucket_seq_len(input_seq_len) if xm else input_seq_len
     padding = pad_seq_len - input_seq_len
     inputs['input_ids'] = F.pad(inputs['input_ids'], (0, padding), 'constant', 1)
     inputs['attention_mask'] = F.pad(inputs['attention_mask'], (0, padding), 'constant', 0)
@@ -124,6 +142,7 @@ def run_inference(texts: list):
     logits = logits[:input_batch_size].tolist()
     logits = [ tensor[:ragged_input_ids[i].shape[0]] for i,tensor in enumerate(logits) ]
 
+    assert len(logits) == input_batch_size
     return logits
 
 def handle(properties: dict, data: dict={}):

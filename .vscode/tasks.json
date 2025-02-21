@@ -1,0 +1,81 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "docker-build",
+			"label": "docker-build-xla",
+			"dockerBuild": {
+				"tag": "encoder-llm-inference-tutorial:latest",
+				"dockerfile": "${workspaceFolder}/Dockerfile.xla",
+				"context": "${workspaceFolder}",
+				"pull": true
+			}
+		},
+		{
+			"type": "docker-build",
+			"label": "docker-build-neuron",
+			"dockerBuild": {
+				"tag": "espnet-text-to-speech-neuron:latest",
+				"dockerfile": "${workspaceFolder}/Dockerfile.neuron",
+				"context": "${workspaceFolder}",
+				"pull": true
+			}
+		},
+		{
+			"type": "docker-run",
+			"label": "docker-run-xla: debug",
+			"dependsOn": [
+				"docker-build-xla"
+			],
+			"python": {
+				"file": "tutorials/test_xla_lazy_tensor.py"
+			},
+			"dockerRun": {
+				"image": "docker.io/library/encoder-llm-inference-tutorial:latest",
+				"customOptions": "--gpus=all --shm-size=16g",
+				"remove": true,
+				"env": {
+				},
+				"volumes": [
+					{
+						"localPath": "${workspaceFolder}",
+						"containerPath": "/app"
+					},
+					{
+						"localPath": "/home/ubuntu/efs/datasets",
+						"containerPath": "/datasets"
+					}
+				]
+			}
+		},
+		{
+			"type": "docker-run",
+			"label": "docker-run-neuron: debug",
+			"dependsOn": [
+				"docker-build-neuron"
+			],
+			"python": {
+				"file": "tutorials/test_encoder_llm_inference.py"
+			},
+			"dockerRun": {
+				"image": "docker.io/library/espnet-text-to-speech-neuron:latest",
+				"remove": true,
+				"customOptions": "--device=/dev/neuron0",
+				"env": {
+					"NEURON_CC_FLAGS": "--cache_dir=./cache",
+					"NEURON_USE_EAGER_DEBUG_MODE": "0"
+				},
+				"volumes": [
+					{
+						"localPath": "${workspaceFolder}",
+						"containerPath": "/app"
+					},
+					{
+						"localPath": "/home/ubuntu/efs/datasets",
+						"containerPath": "/datasets"
+					}
+				]
+			}
+		}
+	]
+}

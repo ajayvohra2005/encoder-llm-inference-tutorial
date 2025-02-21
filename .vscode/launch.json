@@ -11,6 +11,40 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "args": ["--model-id", "distilbert/distilroberta-base"]
-        }
+        },
+        {
+            "name": "Docker: Python Debug XLA",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run-xla: debug",
+            "python": {
+                "pathMappings": [
+                    {
+                        "localRoot": "${workspaceFolder}",
+                        "remoteRoot": "/app"
+                    }
+                ],
+                "env": {}, // set environment in tasks.json
+                "projectType": "general",
+                "args": []
+            }
+        },
+        {
+            "name": "Docker: Python Debug Neuron",
+            "type": "docker",
+            "request": "launch",
+            "preLaunchTask": "docker-run-neuron: debug",
+            "python": {
+                "pathMappings": [
+                    {
+                        "localRoot": "${workspaceFolder}",
+                        "remoteRoot": "/app"
+                    }
+                ],
+                "env": {}, // set environment in tasks.json
+                "projectType": "general",
+                "args": []
+            }
+        },
     ]
 }
