@@ -183,18 +183,24 @@ class TritonPythonModel:
         responses = []
            
         texts = []
+        n_requests = 0
         for request in requests:
             inputs = pb_utils.get_input_tensor_by_name(request, "text_input").as_numpy().tolist()
+            assert len(inputs) == 1, f"inputs: {len(inputs)}"
             text = [ input[0].decode("utf-8") if isinstance(input[0], bytes) else input[0] for input in inputs]
             assert len(text) == 1
             texts.append(text[0])
-            if texts:
-                logits = self._run_inference(texts)
-                output_tensors = [ pb_utils.Tensor("logits", np.array(result).astype(self.logits_dtype)) for result in logits ]
-                inference_response = pb_utils.InferenceResponse(output_tensors=output_tensors)
-                responses.append(inference_response)
-
-        assert len(responses) == len(requests)
+            n_requests += 1
+        
+        assert len(texts) == n_requests, f"num requests: {len(responses)} != num texts {len(texts)} "
+    
+        logits = self._run_inference(texts)
+        for result in logits:
+            output_tensor = pb_utils.Tensor("logits", np.array(result).astype(self.logits_dtype))
+            inference_response = pb_utils.InferenceResponse(output_tensors=[output_tensor])
+            responses.append(inference_response)
+       
+        assert len(responses) == n_requests, f"num responses: {len(responses)} != num requests {n_requests}"
         return responses
     
     def finalize(self):
