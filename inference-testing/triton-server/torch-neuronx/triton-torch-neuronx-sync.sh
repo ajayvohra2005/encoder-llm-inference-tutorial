@@ -9,9 +9,12 @@ CACHE_DIR=/cache
 
 cat > /tmp/config.pbtxt <<EOF
   backend: "python"
-  max_batch_size: 0
+  max_batch_size: 8
   model_transaction_policy {
-    decoupled: true
+    decoupled: false
+  }
+  dynamic_batching {
+    max_queue_delay_microseconds: 1000
   }
 
   input [ 
@@ -52,7 +55,7 @@ mkdir -p $MODEL_REPO
 VERSION=1
 MODEL_NAME=model
 mkdir -p $MODEL_REPO/$MODEL_NAME/$VERSION
-cp /scripts/triton_python_model.py $MODEL_REPO/$MODEL_NAME/$VERSION/model.py
+cp /scripts/triton_python_model_sync.py $MODEL_REPO/$MODEL_NAME/$VERSION/model.py
 cp /tmp/model.json $MODEL_REPO/$MODEL_NAME/$VERSION/model.json
 cp /tmp/config.pbtxt $MODEL_REPO/$MODEL_NAME/config.pbtxt
 export NEURON_CC_FLAGS="--model-type=transformer --enable-fast-loading-neuron-binaries"

@@ -24,7 +24,7 @@ To build the container for triton inference server with neuronx, execute this on
 ### Triton Inference Server
 
 
-#### Torh-neuronx Neuronx Backend
+#### Torch-Neuronx Asynchronous Backend
 
 To launch:
 
@@ -33,5 +33,17 @@ To launch:
 
 To stop the server:
 
-    ./triton-server/torch-neuronx/compose-triton-torch-neuronx.sh down
+    HF_TOKEN=your-token MODEL_ID=hf-model-id \
+        ./triton-server/torch-neuronx/compose-triton-torch-neuronx.sh down
 
+#### Torch-Neuronx Synchronous Backend
+
+To launch:
+
+    HF_TOKEN=your-token MODEL_ID=hf-model-id \
+        ./triton-server/torch-neuronx/compose-triton-torch-neuronx-sync.sh up
+
+To stop the server:
+
+    HF_TOKEN=your-token MODEL_ID=hf-model-id \
+        ./triton-server/torch-neuronx/compose-triton-torch-neuronx-sync.sh down
