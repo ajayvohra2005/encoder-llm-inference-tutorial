@@ -51,7 +51,7 @@ class TritonPythonModel:
             if output['name'] not in output_names:
                 auto_complete_model_config.add_output(output)
 
-        auto_complete_model_config.set_model_transaction_policy(dict(decoupled=False))
+        auto_complete_model_config.set_model_transaction_policy(dict(decoupled=True))
         auto_complete_model_config.set_max_batch_size(0)
 
         return auto_complete_model_config
