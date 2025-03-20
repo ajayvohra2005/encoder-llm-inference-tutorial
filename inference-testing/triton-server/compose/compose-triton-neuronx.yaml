@@ -6,6 +6,9 @@ services:
       - MODEL_ID_OR_PATH=${MODEL_ID_OR_PATH}
       - HF_HOME=/snapshots/huggingface
       - HF_TOKEN=${HF_TOKEN}
+      - MODEL_SERVER_CORES=${MODEL_SERVER_CORES}
+      - NEURON_RT_NUM_CORES=${NEURON_RT_NUM_CORES}
+      - export OMP_NUM_THREADS=${OMP_NUM_THREADS}
     devices:
      - /dev/neuron0:/dev/neuron0
      - /dev/neuron1:/dev/neuron1

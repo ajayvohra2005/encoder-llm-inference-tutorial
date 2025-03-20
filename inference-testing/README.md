@@ -24,8 +24,6 @@ To build the container for triton inference server with neuronx, execute this on
 ### Triton Inference Server
 
 
-#### Torch-Neuronx Asynchronous Backend
-
 To launch:
 
     HF_TOKEN=your-token MODEL_ID=hf-model-id \
@@ -35,15 +33,16 @@ To stop the server:
 
     HF_TOKEN=your-token MODEL_ID=hf-model-id \
         ./triton-server/torch-neuronx/compose-triton-torch-neuronx.sh down
+        
+### Optonal Environment Variables
 
-#### Torch-Neuronx Synchronous Backend
+You may set following optional environment variables when launching the server above. 
 
-To launch:
+The default values may not provide the best-performance for your given machine. Please experiment with different values of MODEL_SERVER_CORES ( must be set <= number of cores on the machine).
 
-    HF_TOKEN=your-token MODEL_ID=hf-model-id \
-        ./triton-server/torch-neuronx/compose-triton-torch-neuronx-sync.sh up
+ Unless your model is using Tensor Parallelism, NEURON_RT_NUM_CORES must always be set to 1.
 
-To stop the server:
-
-    HF_TOKEN=your-token MODEL_ID=hf-model-id \
-        ./triton-server/torch-neuronx/compose-triton-torch-neuronx-sync.sh down
+| Name      | Default Value | Semantics |
+| ----------- | ----------- | ----------- |
+| MODEL_SERVER_CORES      | Number of cores on machine       | Number of Triton Server instances = Number-of-cores-on-machine // MODEL_SERVER_CORES       |
+| NEURON_RT_NUM_CORES   | 1        | Number of model instances within a Triton Inference Server = MODEL_SERVER_CORES // NEURON_RT_NUM_CORES |

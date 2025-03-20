@@ -9,7 +9,6 @@ import math
 import numpy as np
 import itertools
 import torch.nn.functional as F
-import asyncio, threading
 
 import triton_python_backend_utils as pb_utils
 
@@ -24,9 +23,7 @@ class TritonPythonModel:
         logits_config = pb_utils.get_output_config_by_name(self.model_config, "logits")
         self.logits_dtype = pb_utils.triton_string_to_numpy(logits_config["data_type"])
         self.example_text = 'The giant panda, sometimes called a panda bear, or simply panda, is a bear species endemic to China.'
-        self.__tasks = set()
         self._init_service()
-        self.__tasks_inited = False
 
         self.logger.log_info("TritonPythonModel initialized")
 
@@ -51,7 +48,7 @@ class TritonPythonModel:
             if output['name'] not in output_names:
                 auto_complete_model_config.add_output(output)
 
-        auto_complete_model_config.set_model_transaction_policy(dict(decoupled=True))
+        auto_complete_model_config.set_model_transaction_policy(dict(decoupled=False))
         auto_complete_model_config.set_max_batch_size(0)
 
         return auto_complete_model_config
@@ -129,15 +126,11 @@ class TritonPythonModel:
 
     def _init_service(self):
 
-        max_batch_size = int(self.model_config.get('max_batch_size', 0))
-        assert (
-            max_batch_size == 0
-        ), "Triton Server model config max_batch_size must be set to 0"
-
+        max_batch_size = int(self.model_config.get('max_batch_size', 8))
         using_decoupled = pb_utils.using_decoupled_model_transaction_policy(self.model_config) 
         assert (
-            using_decoupled 
-        ), "Triton Server Python backend must use decoupled model transaction policy"
+            not using_decoupled 
+        ), "Triton Server Python backend must not use decoupled model transaction policy"
 
         model_args_filepath = os.path.join( 
             pb_utils.get_model_dir(), _MODEL_ARGS_FILENAME
@@ -162,6 +155,9 @@ class TritonPythonModel:
             assert (bsl & (bsl-1) == 0), f"bucket seq len {bsl} is not power of 2"
         self.max_seq_len = max(self.bucket_seq_len)
 
+        assert ( self.max_batch_size == max_batch_size), \
+        f"Triton Server max_batch_size {max_batch_size}  is not equal to model max_batch_size: {self.max_batch_size}"
+
         assert ( self.max_batch_size >= 1 and self.max_batch_size <= 8), \
         "max_batch_size {self.max_batch_size}  is not between 1 and 8"
 
@@ -181,130 +177,30 @@ class TritonPythonModel:
         os.chdir(path)
         self.logger.log_info("Exit: load_model")
 
-        self.logger.log_info("Create request asyncio queue: maxsize {self.max_batch_size}")
-        self.__request_queue = asyncio.Queue(maxsize=self.max_batch_size)
 
-        self.logger.log_info("Create response asyncio queue: maxsize {self.max_batch_size}")
-        self.__response_queue = asyncio.Queue(maxsize=self.max_batch_size)
-
-
-    async def __init_tasks(self):
-        self.logger.log_info("Start respond loop")
-        task = asyncio.create_task(self.__respond_loop())
-        self.__tasks.add(task)
-        task.add_done_callback(self.__tasks.discard)
-        
-        self.logger.log_info("Start inference loop")
-        task = asyncio.create_task(self.__inference_loop())
-        self.__tasks.add(task)
-        task.add_done_callback(self.__tasks.discard)
-
-        self.__tasks_inited = True
-
-    async def execute(self, requests):
-        if not self.__tasks_inited:
-            try:
-                await self.__init_tasks()
-            except KeyError:
-                self.logger.log_error("Future not found or has already completed.")
-
-        for request in requests:
-            try:
-                await self.__request_queue.put(request)
-            except KeyError:
-                self.logger.log_error("Future not found or has already completed.")
-
-    async def __check_requests(self):
-        if len(self.__requests) == 0:
-            new_request = await self.__request_queue.get()
-            self.__request_queue.task_done()
-            self.__requests.append(new_request)
-
-        while len(self.__requests) < self.max_batch_size:
-            try:
-                await asyncio.sleep(.001) # Adjust based on model latency
-                new_request = self.__request_queue.get_nowait()
-                self.__request_queue.task_done()
-                self.__requests.append(new_request)
-            except asyncio.QueueEmpty:
-                break
-
-    def __inference(self):
-
+    def execute(self, requests):
+        responses = []
+           
         texts = []
-        for request in self.__requests:
+        n_requests = 0
+        for request in requests:
             inputs = pb_utils.get_input_tensor_by_name(request, "text_input").as_numpy().tolist()
-            text = [ input.decode("utf-8") if isinstance(input, bytes) else input for input in inputs]
+            assert len(inputs) == 1, f"inputs: {len(inputs)}"
+            text = [ input[0].decode("utf-8") if isinstance(input[0], bytes) else input[0] for input in inputs]
             assert len(text) == 1
             texts.append(text[0])
+            n_requests += 1
         
-        if texts:
-            logits = self._run_inference(texts)
-            for result in logits:
-                self.__results.append(result)
-
-    async def __inference_loop(self):
-        while True:
-            try:
-                await self.__check_requests()
-                assert len(self.__requests) <= self.max_batch_size, \
-                    f"num requests: {len(self.__requests)} > max_batch_size: {self.max_batch_size} "
-                
-                self.__inference()
-
-                assert len(self.__results) == len(self.__requests), \
-                    f"After inference num_results {len(self.__results)} != num_requests {len(self.__requests)} "
-                
-                finished = []
-                for i in range(len(self.__requests)):
-                    res = self.__results[i]
-                    req = self.__requests[i]
-                    try:
-                        self.__response_queue.put_nowait((req, res))
-                    except asyncio.QueueFull:
-                        self.logger.log_info("response queue is full; await put")
-                        await self.__response_queue.put((req, res))
-                    finished.append((req, res))
-                
-                for item in finished:
-                    req, res = item
-                    self.__requests.remove(req)
-                    self.__results.remove(res)
-
-                assert len(self.__results) == len(self.__requests), \
-                    f"After send response {len(self.__results)} != num_requests {len(self.__requests)} "
-                
-            except Exception as e:
-                self.logger.log_error(f"Unpexpected error: {e}. Inflight requests discarded. Reset engine.")
-                self.reset()
-
-    def reset(self):
-        self.__requests = []
-        self.__results = []
-
-    async def __respond_loop(self):
-        self.reset()
-
-        while True:
-            try:
-                req, res = await self.__response_queue.get()
-                self.__response_queue.task_done()
-                
-                t = threading.Thread(target=self.__send_response, 
-                kwargs={"request": req, "response": res})
-                t.start()
-            except Exception as e:
-                self.logger.log_error(f"Error: respond loop exception {e}")
-
-    def __send_response(self, request, response: list):
-        try:
-            response_sender = request.get_response_sender()
-            
-            out_tensor = pb_utils.Tensor("logits", np.array(response).astype(self.logits_dtype))
-            inference_response = pb_utils.InferenceResponse(output_tensors=[out_tensor])
-            response_sender.send(inference_response, flags=pb_utils.TRITONSERVER_RESPONSE_COMPLETE_FINAL)
-        except Exception as e:
-            self.logger.log_error(f"send error: {request} {e}")
-
+        assert len(texts) == n_requests, f"num requests: {len(responses)} != num texts {len(texts)} "
+    
+        logits = self._run_inference(texts)
+        for result in logits:
+            output_tensor = pb_utils.Tensor("logits", np.array(result).astype(self.logits_dtype))
+            inference_response = pb_utils.InferenceResponse(output_tensors=[output_tensor])
+            responses.append(inference_response)
+       
+        assert len(responses) == n_requests, f"num responses: {len(responses)} != num requests {n_requests}"
+        return responses
+    
     def finalize(self):
         self.logger.log_info("Cleaning up...")

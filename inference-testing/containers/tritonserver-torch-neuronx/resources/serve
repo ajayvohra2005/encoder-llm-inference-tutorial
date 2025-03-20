@@ -59,6 +59,7 @@ def get_core_groups():
     num_cores = len(files)*2
     model_server_cores = int(os.environ.get("MODEL_SERVER_CORES", num_cores))
      
+    assert model_server_cores <= num_cores, f"MODEL_SERVER_CORES: {model_server_cores} > Num cores on machine {num_cores}"
     cores = [ x for x in range(num_cores)]
     core_groups = [cores[x:x+model_server_cores] for x in range(0, len(cores), model_server_cores)]
     core_groups = core_groups[: (num_cores// model_server_cores)]
@@ -95,14 +96,11 @@ def start_server():
     
     for i, ports in enumerate(triton_server_ports):
         env_copy = copy.deepcopy(os.environ)
-        group = core_groups[i]
-        env_copy['NEURON_RT_VISIBLE_CORES']=f"{group[0]}-{group[-1]}"
         env_copy['NEURON_RT_ROOT_COMM_ID']=f"localhost:{48620+i}"
         http = ports['http']
         grpc = ports['grpc']
         metrics = ports['metrics']
         print(f"server instance: {i}: http: {http}, grpc: {grpc}, metric: {metrics}")
-        print(f"server instance: {i}: NEURON_RT_VISIBLE_CORES={env_copy['NEURON_RT_VISIBLE_CORES']}")
         server = subprocess.Popen(['tritonserver', 
                                    f"--model-repository={model_repo}",
                                    f"--grpc-port={grpc}",

@@ -4,14 +4,21 @@
 [ ! -d /snapshots ] && echo "/snapshots dir must exist" && exit 1
 [  -z "$MODEL_ID_OR_PATH"  ] && echo "MODEL_ID_OR_PATH environment variable must exist" && exit 1
 
+NUM_CORES=$(($(neuron-ls -j | grep neuron_device | wc -l)*2))
+: ${MODEL_SERVER_CORES:=$NUM_CORES}
+: ${NEURON_RT_NUM_CORES:=1}
+: ${OMP_NUM_THREADS:=16}
 
 CACHE_DIR=/cache
-
+MODEL_COUNT=$(( $MODEL_SERVER_CORES / $NEURON_RT_NUM_CORES ))
 cat > /tmp/config.pbtxt <<EOF
   backend: "python"
-  max_batch_size: 0
+  max_batch_size: 8
   model_transaction_policy {
-    decoupled: true
+    decoupled: false
+  }
+  dynamic_batching {
+    max_queue_delay_microseconds: 1000
   }
 
   input [ 
@@ -31,7 +38,7 @@ cat > /tmp/config.pbtxt <<EOF
 
   instance_group [
     {
-      count: 1
+      count: $MODEL_COUNT
       kind: KIND_MODEL
     }
   ]
@@ -57,8 +64,8 @@ cp /tmp/model.json $MODEL_REPO/$MODEL_NAME/$VERSION/model.json
 cp /tmp/config.pbtxt $MODEL_REPO/$MODEL_NAME/config.pbtxt
 export NEURON_CC_FLAGS="--model-type=transformer --enable-fast-loading-neuron-binaries"
 export NEURON_COMPILE_CACHE_URL="$CACHE_DIR"
-export OMP_NUM_THREADS=4
-export MODEL_SERVER_CORES=1
 export FI_EFA_FORK_SAFE=1
+export NEURON_RT_NUM_CORES
+export OMP_NUM_THREADS
 /opt/program/serve \
 && /bin/bash -c "trap : TERM INT; sleep infinity & wait"
